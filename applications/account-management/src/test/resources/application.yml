@@ -1,0 +1,42 @@
+server:
+  servlet:
+    context-path: /account-management
+  port: 8081
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+      show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    driver-class-name: org.postgresql.Driver
+  rabbitmq:
+    host: localhost
+    password: guest
+    username: guest
+    port: 5672
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: ${KEYCLOAK_HOST}realms/bookstore-realm
+          jwk-set-uri: ${KEYCLOAK_HOST}realms/bookstore-realm/protocol/openid-connect/certs
+
+keycloak-server:
+  host: ${KEYCLOAK_HOST}
+
+queue-names:
+  delete-user: q.delete-user
+
+feign:
+  client:
+    config:
+      default:
+        loggerLevel: full
+
+logging:
+  level:
+    org.springframework.security: DEBUG
