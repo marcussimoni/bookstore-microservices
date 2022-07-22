@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Thu Jul 21 20:01:03 2022
+# Make data base, printed on Fri Jul 22 12:32:24 2022
 
 # Variables
 
@@ -30,8 +30,6 @@ SNAP_COMMON = /var/snap/code/common
 XDG_SESSION_TYPE = x11
 # automatic
 ?D = $(patsubst %/,%,$(dir $?))
-# environment
-IM_CONFIG_PHASE = 1
 # automatic
 @D = $(patsubst %/,%,$(dir $@))
 # environment
@@ -41,15 +39,17 @@ GDMSESSION = ubuntu
 # environment
 XMODIFIERS = @im=ibus
 # makefile
-CURDIR := /home/marcus/Development/projects/DESENV/microservices_architecture/infra
+CURDIR := /home/marcus/Development/projects/DESENV/bookstore-microservices/infra
 # makefile
 SHELL = /bin/sh
 # environment
 SNAP_DATA = /var/snap/code/102
 # environment
+VTE_VERSION = 6003
+# environment
 VSCODE_NLS_CONFIG = {"locale":"en-us","availableLanguages":{},"_languagePackSupport":true}
 # environment
-JOURNAL_STREAM = 8:59518
+JOURNAL_STREAM = 8:59572
 # environment
 XDG_CONFIG_DIRS = /etc/xdg/xdg-ubuntu:/etc/xdg
 # environment
@@ -65,7 +65,7 @@ JAVA_HOME = /usr/lib/jvm/jdk-17.0.2
 # automatic
 @F = $(notdir $@)
 # environment
-GIO_LAUNCHED_DESKTOP_FILE = /var/lib/snapd/desktop/applications/code_code.desktop
+IM_CONFIG_PHASE = 1
 # environment
 USERNAME = marcus
 # environment
@@ -75,29 +75,27 @@ MANDATORY_PATH = /usr/share/gconf/ubuntu.mandatory.path
 # environment
 XDG_DATA_DIRS = /usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop
 # environment
-DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus
-# environment
-_ = /snap/code/102/usr/share/code/code
+DBUS_SESSION_BUS_ADDRESS = unix:path=/run/user/1000/bus,guid=750f7f11e03b0027c8678f4b62da879a
 # environment
 LC_CTYPE = pt_BR.UTF-8
 # environment
-MANAGERPID = 4683
+MANAGERPID = 4906
 # environment
 LESSOPEN = | /usr/bin/lesspipe %s
 # environment
 LC_NAME = pt_BR.UTF-8
 # environment
-VSCODE_CWD = /home/marcus
+VSCODE_CWD = /home/marcus/Development/projects/DESENV/bookstore-microservices/infra
 # environment
 GSETTINGS_SCHEMA_DIR = /snap/code/102/usr/share/glib-2.0/schemas
 # default
 MAKE_HOST := x86_64-pc-linux-gnu
 # environment
-PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-11-openjdk-amd64/bin:/home/marcus/Development/environment/maven/apache-maven-3.8.1/bin:/home/marcus/go/bin:/home/marcus/go/bin:/usr/local/go/bin:/usr/lib/jvm/java-11-openjdk-amd64/bin:/home/marcus/Development/environment/maven/apache-maven-3.8.1/bin:/home/marcus/go/bin:/home/marcus/go/bin:/usr/local/go/bin
+PATH = /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/usr/lib/jvm/java-11-openjdk-amd64/bin:/home/marcus/Development/environment/maven/apache-maven-3.8.1/bin:/home/marcus/go/bin:/home/marcus/go/bin:/usr/local/go/bin
 # environment
 GPG_AGENT_INFO = /run/user/1000/gnupg/S.gpg-agent:0:1
 # environment
-SESSION_MANAGER = local/marcus:@/tmp/.ICE-unix/6247,unix/marcus:/tmp/.ICE-unix/6247
+SESSION_MANAGER = local/marcus:@/tmp/.ICE-unix/6642,unix/marcus:/tmp/.ICE-unix/6642
 # environment
 XDG_RUNTIME_DIR = /run/user/1000
 # environment
@@ -115,19 +113,17 @@ DISABLE_WAYLAND = 1
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-INVOCATION_ID = fafb7fc4986741619b95cc264704b597
+INVOCATION_ID = b3fd9719ce78492e8df53764fc250f53
 # environment
 GDK_PIXBUF_MODULEDIR = /snap/code/102/usr/lib/x86_64-linux-gnu/gdk-pixbuf-2.0/2.10.0/loaders
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
-LS_COLORS = 
+LS_COLORS = rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:
 # environment
 XDG_SESSION_DESKTOP = ubuntu
 # environment
 SSH_AUTH_SOCK = /run/user/1000/keyring/ssh
-# environment
-GIO_LAUNCHED_DESKTOP_FILE_PID = 29722
 # automatic
 %F = $(notdir $%)
 # environment
@@ -135,11 +131,11 @@ DISPLAY = :1
 # environment
 SNAP_INSTANCE_KEY = 
 # environment
-PWD = /home/marcus/Development/projects/DESENV/microservices_architecture/infra
+PWD = /home/marcus/Development/projects/DESENV/bookstore-microservices/infra
 # default
 .LOADED := 
 # environment
-SSH_AGENT_PID = 6212
+SSH_AGENT_PID = 6558
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = ubuntu:GNOME
 # environment
@@ -180,6 +176,8 @@ GNOME_DESKTOP_SESSION_ID = this-is-deprecated
 LC_TIME = pt_BR.UTF-8
 # environment
 SNAP_REAL_HOME = /home/marcus
+# environment
+COLORTERM = truecolor
 # default
 MAKE = $(MAKE_COMMAND)
 # default
@@ -189,7 +187,7 @@ QT_IM_MODULE = ibus
 # environment
 SNAP_USER_DATA = /home/marcus/snap/code/102
 # environment
-SHLVL = 0
+SHLVL = 1
 # environment
 GNOME_SHELL_SESSION_MODE = ubuntu
 # default
@@ -216,8 +214,6 @@ MAKE_COMMAND := make
 *F = $(notdir $*)
 # environment
 VSCODE_IPC_HOOK = /run/user/1000/vscode-e37bfb61-1.69.2-main.sock
-# environment
-BAMF_DESKTOP_FILE_HINT = /var/lib/snapd/desktop/applications/code_code.desktop
 # makefile
 MAKEFLAGS = pqrR
 # environment
@@ -230,8 +226,6 @@ MFLAGS = -pqrR
 GDK_BACKEND = x11
 # environment
 LC_PAPER = pt_BR.UTF-8
-# environment
-LC_IDENTIFICATION = pt_BR.UTF-8
 # environment
 QT_ACCESSIBILITY = 1
 # environment
@@ -251,9 +245,13 @@ SNAP_NAME = code
 # environment
 LC_ALL = C
 # environment
-GJS_DEBUG_TOPICS = JS ERROR;JS LOG
+DBUS_STARTER_BUS_TYPE = session
+# environment
+GNOME_TERMINAL_SCREEN = /org/gnome/Terminal/screen/28dc8868_5a14_4624_8ea6_7920221fac27
 # automatic
 ^F = $(notdir $^)
+# environment
+GNOME_TERMINAL_SERVICE = :1.275
 # default
 SUFFIXES := 
 # environment
@@ -265,7 +263,7 @@ WINDOWPATH = 2
 # default
 .INCLUDE_DIRS = /usr/include /usr/local/include /usr/include
 # environment
-GJS_DEBUG_OUTPUT = stderr
+LC_IDENTIFICATION = pt_BR.UTF-8
 # default
 .RECIPEPREFIX := 
 # environment
@@ -273,9 +271,13 @@ LC_ADDRESS = pt_BR.UTF-8
 # environment
 LANG = C
 # environment
-VSCODE_PID = 29772
+TERM = xterm-256color
+# environment
+VSCODE_PID = 907310
+# environment
+DBUS_STARTER_ADDRESS = unix:path=/run/user/1000/bus,guid=750f7f11e03b0027c8678f4b62da879a
 # variable set hash-table stats:
-# Load=131/1024=13%, Rehash=0, Collisions=25/156=16%
+# Load=132/1024=13%, Rehash=0, Collisions=21/157=13%
 
 # Pattern-specific Variable Values
 
@@ -283,7 +285,7 @@ VSCODE_PID = 29772
 
 # Directories
 
-# . (device 2057, inode 8137453): 5 files, no impossibilities.
+# . (device 2057, inode 9065332): 5 files, no impossibilities.
 
 # 5 files, no impossibilities in 1 directories.
 
@@ -293,6 +295,7 @@ VSCODE_PID = 29772
 
 # Files
 
+ 
 startup:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
@@ -318,7 +321,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-07-20 08:39:14.046894425
+#  Last modified 2022-07-20 08:39:14.046894
 #  File has been updated.
 #  Successfully updated.
 
@@ -335,7 +338,6 @@ Makefile:
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
- 
 
 # strcache buffers: 1 (0) / strings = 12 / storage = 114 B / avg = 9 B
 # current buf: size = 8162 B / used = 114 B / count = 12 / avg = 9 B
@@ -343,6 +345,6 @@ Makefile:
 # strcache performance: lookups = 18 / hit rate = 33%
 # hash-table stats:
 # Load=12/8192=0%, Rehash=0, Collisions=1/18=6%
-# Finished Make data base on Thu Jul 21 20:01:03 2022
+# Finished Make data base on Fri Jul 22 12:32:24 2022
 
  

@@ -1,0 +1,12 @@
+server:
+  servlet:
+    context-path: /bookstore
+  port: 8082
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:9000/realms/bookstore-realm
+          jwk-set-uri: http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/certs

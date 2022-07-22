@@ -1,5 +1,5 @@
 .vscode
 
-infra/.vscode
-applications/.idea
+infra/.vscode/
+applications/.idea/
 

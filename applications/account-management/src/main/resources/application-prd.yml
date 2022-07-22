@@ -26,7 +26,7 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://${KEYCLOAK_HOST}:9000/realms/bookstore-realm
+          issuer-uri: http://keycloak-server/realms/bookstore-realm
           jwk-set-uri: http://${KEYCLOAK_HOST}:9000/realms/bookstore-realm/protocol/openid-connect/certs
 
 keycloak-server:
