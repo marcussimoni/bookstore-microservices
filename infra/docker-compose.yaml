@@ -42,7 +42,7 @@ services:
       - KEYCLOAK_DATABASE_PASSWORD=postgres
       - KEYCLOAK_DATABASE_SCHEMA=public
       # config keycloak token issuer
-      - KEYCLOAK_HOSTNAME=localhost
+      - KEYCLOAK_HOSTNAME=keycloak-server
       - KEYCLOAK_HTTP_PORT=8080
     depends_on:
       - postgresql
