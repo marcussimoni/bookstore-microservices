@@ -13,13 +13,13 @@ public class KeycloakAuthorizationService {
     @Autowired
     private KeycloakAuthorizationClient client;
 
-    @Value("${keycloak-server.admin-cli.password}")
+    @Value("${keycloak-server.user-management-client.password}")
     private String password;
 
     public String authenticate(){
 
         var request = new KeycloakAuthTokenRequestDTO();
-        request.setClient_id("admin-cli");
+        request.setClient_id("user-management-client");
         request.setGrant_type("client_credentials");
         request.setClient_secret(password);
 

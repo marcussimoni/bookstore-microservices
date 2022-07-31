@@ -1,5 +1,0 @@
-make --dry-run --always-make --keep-going --print-directory
-make: Entering directory '/home/marcus/Development/projects/DESENV/bookstore-microservices/infra'
-docker stop $(docker ps -q)
-make: Leaving directory '/home/marcus/Development/projects/DESENV/bookstore-microservices/infra'
- 

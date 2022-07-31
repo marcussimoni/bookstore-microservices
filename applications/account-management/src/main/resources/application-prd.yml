@@ -31,10 +31,8 @@ spring:
 
 keycloak-server:
   host: http://${KEYCLOAK_HOST}:8080
-  admin-cli:
-    password: KHwj9kZE1UZ4PSSfvIfoyiVTvpdjyjrP
   user-management-client:
-    password: toY1WyJlNt0jUAmTJ2UalDLVGDacI3Y4
+    password: ${USER-MANAGEMENT-CLIENT-PASSWORD}
 
 queue-names:
   delete-user: q.delete-user

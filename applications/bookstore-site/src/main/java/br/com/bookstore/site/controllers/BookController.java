@@ -9,7 +9,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@RequestMapping("book")
+@RequestMapping("site/book")
 public class BookController {
 
     @GetMapping

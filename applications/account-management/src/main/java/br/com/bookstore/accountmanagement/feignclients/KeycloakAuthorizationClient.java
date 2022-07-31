@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 )
 public interface KeycloakAuthorizationClient {
 
-    @PostMapping(path = "/realms/master/protocol/openid-connect/token", consumes = "application/x-www-form-urlencoded")
+    @PostMapping(path = "/realms/bookstore-realm/protocol/openid-connect/token", consumes = "application/x-www-form-urlencoded")
     KeycloakAccessTokenDTO getAuthToken(KeycloakAuthTokenRequestDTO request);
 
 }

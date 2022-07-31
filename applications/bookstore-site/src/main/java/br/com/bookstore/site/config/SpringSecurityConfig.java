@@ -17,15 +17,24 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-            .authorizeRequests(auth ->
-                auth
-                    .antMatchers(HttpMethod.GET, "/book/**").hasAuthority(USER)
-                    .antMatchers(HttpMethod.POST, "/book/**").hasAuthority(USER)
-                    .antMatchers(HttpMethod.PUT, "/book/**").hasAuthority(USER)
-                    .anyRequest().authenticated()
-            )
-            .oauth2ResourceServer()
-            .jwt().jwtAuthenticationConverter(autheticationConverter())
+                .csrf()
+                .disable()
+
+                .authorizeRequests()
+                .antMatchers(HttpMethod.POST, "/site/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/site/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/site/**").permitAll()
+                .and()
+
+                .authorizeRequests(auth ->
+                    auth
+                        .antMatchers(HttpMethod.GET, "/book/**").hasAuthority(USER)
+                        .antMatchers(HttpMethod.POST, "/book/**").hasAuthority(USER)
+                        .antMatchers(HttpMethod.PUT, "/book/**").hasAuthority(USER)
+                        .anyRequest().authenticated()
+                )
+                .oauth2ResourceServer()
+                .jwt().jwtAuthenticationConverter(autheticationConverter())
         ;
     }
 
