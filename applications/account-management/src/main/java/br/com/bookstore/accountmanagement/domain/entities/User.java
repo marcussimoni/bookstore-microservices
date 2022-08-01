@@ -21,4 +21,7 @@ public class User implements Serializable {
     private String lastName;
     private String email;
 
+    @Enumerated(EnumType.STRING)
+    private BookstoreUserType type;
+
 }

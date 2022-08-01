@@ -1,5 +1,6 @@
 package br.com.bookstore.accountmanagement.domain.dtos;
 
+import br.com.bookstore.accountmanagement.domain.entities.BookstoreUserType;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -28,5 +29,7 @@ public class UserDTO implements Serializable {
     private boolean totp;
     private int notBefore;
     private AccessDTO access;
+
+    private BookstoreUserType type;
 
 }

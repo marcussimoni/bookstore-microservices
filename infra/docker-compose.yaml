@@ -42,8 +42,8 @@ services:
       - KEYCLOAK_DATABASE_PASSWORD=postgres
       - KEYCLOAK_DATABASE_SCHEMA=public
       # config keycloak token issuer
-      - KEYCLOAK_HOSTNAME=keycloak-server
-      - KEYCLOAK_HTTP_PORT=8080
+      # - KEYCLOAK_HOSTNAME=keycloak-server
+      # - KEYCLOAK_HTTP_PORT=8080
     depends_on:
       - postgresql
 
@@ -56,7 +56,6 @@ services:
       KEYCLOAK_HOST: keycloak
       RABBIT_MQ_HOST: rabbitmq
       SPRING_PROFILES_ACTIVE: prd
-      ADMIN-CLI-PASSWORD: 6Ws5T79GuSeCuqooKr78R1FDTyswwRB4
       USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
     ports:
       - 8081:8081
@@ -64,6 +63,21 @@ services:
       - postgresql  
       - keycloak
       - rabbitmq
+
+  bookstore-catalog:
+    image: bookstore/bookstore-catalog
+    container_name: 'bookstore-catalog'
+    restart: always
+    environment:
+      POSTGRES_HOST: postgresql
+      KEYCLOAK_HOST: keycloak
+      SPRING_PROFILES_ACTIVE: prd
+      USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
+    ports:
+      - 8083:8083
+    depends_on:
+      - postgresql  
+      - keycloak
 
 volumes:
   postgres:

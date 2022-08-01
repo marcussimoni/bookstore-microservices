@@ -26,4 +26,14 @@ public class BookstoreExceptionHandler {
 
     }
 
+    @ResponseBody
+    @ExceptionHandler({BookstoreException.class})
+    public ResponseEntity<BookstoreException> bookstoreExceptionHandler(Exception exception){
+
+        BookstoreException bookstoreException = (BookstoreException) exception;
+
+        return ResponseEntity.status(bookstoreException.getStatus()).body(bookstoreException);
+
+    }
+
 }
