@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -20,9 +21,9 @@ public class BookController {
     private BookService service;
 
     @GetMapping
-    public Page<BookDTO> listAll(Pageable page){
+    public Page<BookDTO> listAll(Pageable page, Authentication auth){
 
-        return service.findAll(page);
+        return service.findAll(page, auth);
 
     }
 
@@ -32,8 +33,8 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> save(@RequestBody @Valid BookDTO dto, Principal principal){
-        return new ResponseEntity<>(service.save(dto, principal), HttpStatus.CREATED);
+    public ResponseEntity<BookDTO> save(@RequestBody @Valid BookDTO dto, Authentication auth){
+        return new ResponseEntity<>(service.save(dto, auth), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "{id}")

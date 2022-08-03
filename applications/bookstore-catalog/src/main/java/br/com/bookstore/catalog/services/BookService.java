@@ -12,8 +12,11 @@ import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.security.Principal;
 
 @Data
@@ -25,13 +28,15 @@ public class BookService {
 
     private final AccountManagerClient accountManagerClient;
 
-    public Page<BookDTO> findAll(Pageable page){
+    public Page<BookDTO> findAll(Pageable page, Authentication auth){
+
+        Jwt jwt = getJwt(auth);
 
         return repository.findAll(page).map(book -> {
 
             BookDTO bookDTO = mapper.map(book, BookDTO.class);
 
-            ResponseEntity<BookstoreUserDTO> response = accountManagerClient.autenticatedUser(book.getAuthorId());
+            ResponseEntity<BookstoreUserDTO> response = accountManagerClient.findByUsername(book.getAuthorId(), getAuthorizationToken(jwt));
 
             bookDTO.setAuthor(response.getBody());
 
@@ -39,6 +44,15 @@ public class BookService {
 
         });
 
+    }
+
+    private static Jwt getJwt(Authentication auth) {
+        Jwt jwt = (Jwt) auth.getCredentials();
+        return jwt;
+    }
+
+    private static String getAuthorizationToken(Jwt jwt) {
+        return "Bearer " + jwt.getTokenValue();
     }
 
     public BookDTO findById(long id){
@@ -56,15 +70,22 @@ public class BookService {
 
     }
 
-    public BookDTO save(BookDTO dto, Principal principal) {
+    @Transactional
+    public BookDTO save(BookDTO dto, Authentication auth) {
 
         Book entity = mapper.map(dto, Book.class);
 
-        entity.setAuthorId(principal.getName());
+        Jwt jwt = getJwt(auth);
+
+        entity.setAuthorId(auth.getName());
 
         repository.save(entity);
 
-        return mapper.map(entity, BookDTO.class);
+        BookDTO bookDTO = mapper.map(entity, BookDTO.class);
+
+        bookDTO.setAuthor(accountManagerClient.findByUsername(auth.getName(), getAuthorizationToken(jwt)).getBody());
+
+        return bookDTO;
 
     }
 

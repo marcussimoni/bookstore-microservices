@@ -7,7 +7,6 @@ import java.io.Serializable;
 @Data
 public class BookstoreUserDTO implements Serializable {
 
-    private long id;
     private String username;
     private String firstName;
     private String lastName;

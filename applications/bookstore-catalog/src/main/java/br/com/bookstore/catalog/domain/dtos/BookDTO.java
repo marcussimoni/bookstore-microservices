@@ -20,8 +20,6 @@ public class BookDTO implements Serializable {
 
     private long id;
 
-    private BookstoreUserDTO author;
-
     @NotBlank
     private String publisher;
 
@@ -34,5 +32,7 @@ public class BookDTO implements Serializable {
     @NotNull
     @Positive
     private Integer numberOfPages;
+
+    private BookstoreUserDTO author;
 
 }
