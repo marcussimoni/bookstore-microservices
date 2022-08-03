@@ -1,6 +1,6 @@
 package br.com.bookstore.accountmanagement.controllers;
 
-import br.com.bookstore.accountmanagement.domain.dtos.UserDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.SignUpDTO;
 import br.com.bookstore.accountmanagement.services.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.MediaType;
@@ -19,8 +19,8 @@ public class SignUpController {
     private final UserService userService;
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-    public void signUp(@Valid @RequestBody UserDTO user){
-        userService.signUp(user);
+    public void signUp(@Valid @RequestBody SignUpDTO signUpDTO){
+        userService.signUp(signUpDTO);
     }
 
 }

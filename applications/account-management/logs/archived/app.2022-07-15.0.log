@@ -168,7 +168,7 @@
 	Validation Mode: AUTO
 	Jar files URLs []
 	Managed classes names [
-		br.com.bookstore.accountmanagement.domain.entities.User]
+		br.com.bookstore.accountmanagement.domain.entities.BookstoreUser]
 	Mapping files names []
 	Properties []
 2022-07-15 20:20:30,050 DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl [main] Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
@@ -370,50 +370,50 @@
 2022-07-15 20:20:30,625 DEBUG org.hibernate.type.BasicTypeRegistry [main] HHH000270: Type registration [java.util.UUID] overrides previous : org.hibernate.type.UUIDBinaryType@7708b66a
 2022-07-15 20:20:30,627 DEBUG org.hibernate.type.spi.TypeConfiguration$Scope [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4c6bba7d] to MetadataBuildingContext [org.hibernate.boot.internal.MetadataBuildingContextRootImpl@41e8d917]
 2022-07-15 20:20:30,659 DEBUG org.hibernate.boot.model.relational.Namespace [main] Created database namespace [logicalName=Name{catalog=null, schema=null}, physicalName=Name{catalog=null, schema=null}]
-2022-07-15 20:20:30,671 DEBUG org.hibernate.cfg.AnnotationBinder [main] Binding entity from annotated class: br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:30,671 DEBUG org.hibernate.cfg.AnnotationBinder [main] Binding entity from annotated class: br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:30,673 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 housekeeper] HikariPool-1 - Pool stats (total=1, active=0, idle=1, waiting=0)
 2022-07-15 20:20:30,681 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@1045b15b
 2022-07-15 20:20:30,688 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5178bb60
 2022-07-15 20:20:30,690 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
 2022-07-15 20:20:30,694 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Import with entity name User
 2022-07-15 20:20:30,696 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@60e36da0
-2022-07-15 20:20:30,696 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Bind entity br.com.bookstore.accountmanagement.domain.entities.User on table tb_user
+2022-07-15 20:20:30,696 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Bind entity br.com.bookstore.accountmanagement.domain.entities.BookstoreUser on table tb_user
 2022-07-15 20:20:30,703 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3157442f
 2022-07-15 20:20:30,710 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@19e16d7a
 2022-07-15 20:20:30,718 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@351919d9
 2022-07-15 20:20:30,719 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=id, insertable=true, updatable=true, unique=false}
-2022-07-15 20:20:30,721 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.User] is safe
-2022-07-15 20:20:30,722 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:30,721 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser] is safe
+2022-07-15 20:20:30,722 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:30,722 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property id with lazy=false
-2022-07-15 20:20:30,724 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:id]
+2022-07-15 20:20:30,724 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:id]
 2022-07-15 20:20:30,726 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@61441f19
 2022-07-15 20:20:30,727 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for id
 2022-07-15 20:20:30,729 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property id
 2022-07-15 20:20:30,732 DEBUG org.hibernate.cfg.BinderHelper [main] #makeIdGenerator(org.hibernate.mapping.SimpleValue([org.hibernate.mapping.Column(id)]), id, org.hibernate.id.enhanced.SequenceStyleGenerator, SQ_USER, ...)
 2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=email, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property email with lazy=false
-2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:email]
+2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:email]
 2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for email
 2022-07-15 20:20:30,734 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property email
 2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=first_name, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property firstName with lazy=false
-2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:firstName]
+2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:firstName]
 2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for firstName
 2022-07-15 20:20:30,735 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property firstName
 2022-07-15 20:20:30,735 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@b6ba68
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=keycloak_id, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property keycloakId with lazy=false
-2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:keycloakId]
+2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:keycloakId]
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for keycloakId
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property keycloakId
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=last_name, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:30,736 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property lastName with lazy=false
-2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:lastName]
+2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:lastName]
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for lastName
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property lastName
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=username, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property username with lazy=false
-2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:username]
+2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:username]
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for username
 2022-07-15 20:20:30,737 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property username
 2022-07-15 20:20:30,742 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@53302442
@@ -473,9 +473,9 @@
 2022-07-15 20:20:30,902 DEBUG org.hibernate.secure.spi.JaccIntegrator [main] Skipping JACC integration as it was not enabled
 2022-07-15 20:20:30,903 DEBUG org.hibernate.internal.SessionFactoryImpl [main] Instantiated session factory
 2022-07-15 20:20:30,903 DEBUG org.hibernate.type.spi.TypeConfiguration$Scope [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@4c6bba7d] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@1ad1be5d]
-2022-07-15 20:20:30,965 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.User] is safe
-2022-07-15 20:20:30,965 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.User
-2022-07-15 20:20:31,169 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main] Static SQL for entity: br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:30,965 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser] is safe
+2022-07-15 20:20:30,965 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
+2022-07-15 20:20:31,169 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main] Static SQL for entity: br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:31,170 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Version select: select id from tb_user where id =?
 2022-07-15 20:20:31,170 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Snapshot select: select user_.id, user_.email as email2_0_, user_.first_name as first_na3_0_, user_.keycloak_id as keycloak4_0_, user_.last_name as last_nam5_0_, user_.username as username6_0_ from tb_user user_ where user_.id=?
 2022-07-15 20:20:31,170 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Insert 0: insert into tb_user (email, first_name, keycloak_id, last_name, username, id) values (?, ?, ?, ?, ?, ?)
@@ -489,16 +489,16 @@
 2022-07-15 20:20:31,198 DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker [main] Visiting attribute path : username
 2022-07-15 20:20:31,198 DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy [main] Building LoadPlan...
 2022-07-15 20:20:31,208 DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor [main] processing queryspace <gen:0>
-2022-07-15 20:20:31,211 DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter [main] LoadPlan(entity=br.com.bookstore.accountmanagement.domain.entities.User)
+2022-07-15 20:20:31,211 DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter [main] LoadPlan(entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
     - Returns
-       - EntityReturnImpl(entity=br.com.bookstore.accountmanagement.domain.entities.User, querySpaceUid=<gen:0>, path=br.com.bookstore.accountmanagement.domain.entities.User)
+       - EntityReturnImpl(entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser, querySpaceUid=<gen:0>, path=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=br.com.bookstore.accountmanagement.domain.entities.User)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
           - SQL table alias mapping - user0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-2022-07-15 20:20:31,213 DEBUG org.hibernate.loader.entity.plan.EntityLoader [main] Static select for entity br.com.bookstore.accountmanagement.domain.entities.User [NONE]: select user0_.id as id1_0_0_, user0_.email as email2_0_0_, user0_.first_name as first_na3_0_0_, user0_.keycloak_id as keycloak4_0_0_, user0_.last_name as last_nam5_0_0_, user0_.username as username6_0_0_ from tb_user user0_ where user0_.id=?
+2022-07-15 20:20:31,213 DEBUG org.hibernate.loader.entity.plan.EntityLoader [main] Static select for entity br.com.bookstore.accountmanagement.domain.entities.BookstoreUser [NONE]: select user0_.id as id1_0_0_, user0_.email as email2_0_0_, user0_.first_name as first_na3_0_0_, user0_.keycloak_id as keycloak4_0_0_, user0_.last_name as last_nam5_0_0_, user0_.username as username6_0_0_ from tb_user user0_ where user0_.id=?
 2022-07-15 20:20:31,285 DEBUG org.hibernate.mapping.Table [main] No alter strings for table : tb_user
 2022-07-15 20:20:31,286 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2022-07-15 20:20:31,286 DEBUG org.hibernate.query.spi.NamedQueryRepository [main] Checking 0 named HQL queries
@@ -655,7 +655,7 @@
 2022-07-15 20:20:32,109 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'userListener' via constructor to bean named 'keycloakService'
 2022-07-15 20:20:32,109 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'userListener' via constructor to bean named 'userService'
 2022-07-15 20:20:32,111 DEBUG org.springframework.core.env.PropertySourcesPropertyResolver [main] Found key 'queue-names.delete-user' in PropertySource 'environmentProperties' with value of type String
-2022-07-15 20:20:32,112 DEBUG org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor [main] 1 @JmsListener methods processed on bean 'userListener': {public void br.com.bookstore.accountmanagement.listeners.UserListener.deleteUser(br.com.bookstore.accountmanagement.domain.dtos.UserDTO)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="", concurrency="", destination="${queue-names.delete-user}")]}
+2022-07-15 20:20:32,112 DEBUG org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor [main] 1 @JmsListener methods processed on bean 'userListener': {public void br.com.bookstore.accountmanagement.listeners.UserListener.deleteUser(br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="", concurrency="", destination="${queue-names.delete-user}")]}
 2022-07-15 20:20:32,112 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Creating shared instance of singleton bean 'authenticationManagerBuilder'
 2022-07-15 20:20:32,113 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'authenticationManagerBuilder' via factory method to bean named 'objectPostProcessor'
 2022-07-15 20:20:32,113 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'authenticationManagerBuilder' via factory method to bean named 'org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@22d7b4f8'
@@ -2538,7 +2538,7 @@ Unconditional classes:
 	Validation Mode: AUTO
 	Jar files URLs []
 	Managed classes names [
-		br.com.bookstore.accountmanagement.domain.entities.User]
+		br.com.bookstore.accountmanagement.domain.entities.BookstoreUser]
 	Mapping files names []
 	Properties []
 2022-07-15 20:20:57,146 DEBUG org.hibernate.integrator.internal.IntegratorServiceImpl [main] Adding Integrator [org.hibernate.cfg.beanvalidation.BeanValidationIntegrator].
@@ -2743,49 +2743,49 @@ Unconditional classes:
 2022-07-15 20:20:57,756 DEBUG org.hibernate.boot.model.relational.Namespace [main] Created database namespace [logicalName=Name{catalog=null, schema=null}, physicalName=Name{catalog=null, schema=null}]
 2022-07-15 20:20:57,761 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@75025440
 2022-07-15 20:20:57,769 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@343f5e7b
-2022-07-15 20:20:57,774 DEBUG org.hibernate.cfg.AnnotationBinder [main] Binding entity from annotated class: br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:57,774 DEBUG org.hibernate.cfg.AnnotationBinder [main] Binding entity from annotated class: br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:57,778 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5412a05
 2022-07-15 20:20:57,786 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5410a134
 2022-07-15 20:20:57,795 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@ccdf630
 2022-07-15 20:20:57,796 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3DiscriminatorColumn{logicalColumnName'DTYPE', discriminatorTypeName='string'}
 2022-07-15 20:20:57,801 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Import with entity name User
 2022-07-15 20:20:57,802 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@505e1985
-2022-07-15 20:20:57,804 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Bind entity br.com.bookstore.accountmanagement.domain.entities.User on table tb_user
+2022-07-15 20:20:57,804 DEBUG org.hibernate.cfg.annotations.EntityBinder [main] Bind entity br.com.bookstore.accountmanagement.domain.entities.BookstoreUser on table tb_user
 2022-07-15 20:20:57,810 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@343f770c
 2022-07-15 20:20:57,818 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@25a6498e
 2022-07-15 20:20:57,825 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=id, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,826 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@3ea7c935
 2022-07-15 20:20:57,826 DEBUG com.zaxxer.hikari.pool.HikariPool [HikariPool-1 connection adder] HikariPool-1 - After adding stats (total=10, active=0, idle=10, waiting=0)
-2022-07-15 20:20:57,828 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.User] is safe
-2022-07-15 20:20:57,828 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:57,828 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser] is safe
+2022-07-15 20:20:57,828 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:57,828 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property id with lazy=false
-2022-07-15 20:20:57,830 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:id]
+2022-07-15 20:20:57,830 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:id]
 2022-07-15 20:20:57,832 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for id
 2022-07-15 20:20:57,834 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property id
 2022-07-15 20:20:57,837 DEBUG org.hibernate.cfg.BinderHelper [main] #makeIdGenerator(org.hibernate.mapping.SimpleValue([org.hibernate.mapping.Column(id)]), id, org.hibernate.id.enhanced.SequenceStyleGenerator, SQ_USER, ...)
 2022-07-15 20:20:57,839 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=email, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,840 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property email with lazy=false
-2022-07-15 20:20:57,840 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:email]
+2022-07-15 20:20:57,840 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:email]
 2022-07-15 20:20:57,840 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for email
 2022-07-15 20:20:57,840 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property email
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=first_name, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property firstName with lazy=false
-2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:firstName]
+2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:firstName]
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for firstName
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property firstName
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=keycloak_id, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,841 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property keycloakId with lazy=false
-2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:keycloakId]
+2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:keycloakId]
 2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for keycloakId
 2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property keycloakId
 2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=last_name, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property lastName with lazy=false
-2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:lastName]
+2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:lastName]
 2022-07-15 20:20:57,842 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for lastName
 2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property lastName
 2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.Ejb3Column [main] Binding column: Ejb3Column{table=org.hibernate.mapping.Table(tb_user), mappingColumn=username, insertable=true, updatable=true, unique=false}
 2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] MetadataSourceProcessor property username with lazy=false
-2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.User:username]
+2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.AbstractPropertyHolder [main] Attempting to locate auto-apply AttributeConverter for property [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser:username]
 2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] building SimpleValue for username
 2022-07-15 20:20:57,843 DEBUG org.hibernate.cfg.annotations.PropertyBinder [main] Building property username
 2022-07-15 20:20:57,851 DEBUG org.hibernate.cfg.annotations.SimpleValueBinder [main] Starting fillSimpleValue for id
@@ -2843,9 +2843,9 @@ Unconditional classes:
 2022-07-15 20:20:57,992 DEBUG org.hibernate.secure.spi.JaccIntegrator [main] Skipping JACC integration as it was not enabled
 2022-07-15 20:20:57,993 DEBUG org.hibernate.internal.SessionFactoryImpl [main] Instantiated session factory
 2022-07-15 20:20:57,994 DEBUG org.hibernate.type.spi.TypeConfiguration$Scope [main] Scoping TypeConfiguration [org.hibernate.type.spi.TypeConfiguration@39c7fb0b] to SessionFactoryImpl [org.hibernate.internal.SessionFactoryImpl@7283877]
-2022-07-15 20:20:58,043 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.User] is safe
-2022-07-15 20:20:58,043 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.User
-2022-07-15 20:20:58,236 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main] Static SQL for entity: br.com.bookstore.accountmanagement.domain.entities.User
+2022-07-15 20:20:58,043 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] Not known whether passed class name [br.com.bookstore.accountmanagement.domain.entities.BookstoreUser] is safe
+2022-07-15 20:20:58,043 DEBUG org.hibernate.boot.internal.ClassLoaderAccessImpl [main] No temp ClassLoader provided; using live ClassLoader for loading potentially unsafe class : br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
+2022-07-15 20:20:58,236 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main] Static SQL for entity: br.com.bookstore.accountmanagement.domain.entities.BookstoreUser
 2022-07-15 20:20:58,237 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Version select: select id from tb_user where id =?
 2022-07-15 20:20:58,237 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Snapshot select: select user_.id, user_.email as email2_0_, user_.first_name as first_na3_0_, user_.keycloak_id as keycloak4_0_, user_.last_name as last_nam5_0_, user_.username as username6_0_ from tb_user user_ where user_.id=?
 2022-07-15 20:20:58,237 DEBUG org.hibernate.persister.entity.AbstractEntityPersister [main]  Insert 0: insert into tb_user (email, first_name, keycloak_id, last_name, username, id) values (?, ?, ?, ?, ?, ?)
@@ -2859,16 +2859,16 @@ Unconditional classes:
 2022-07-15 20:20:58,266 DEBUG org.hibernate.persister.walking.spi.MetamodelGraphWalker [main] Visiting attribute path : username
 2022-07-15 20:20:58,266 DEBUG org.hibernate.loader.plan.build.internal.FetchStyleLoadPlanBuildingAssociationVisitationStrategy [main] Building LoadPlan...
 2022-07-15 20:20:58,276 DEBUG org.hibernate.loader.plan.exec.internal.LoadQueryJoinAndFetchProcessor [main] processing queryspace <gen:0>
-2022-07-15 20:20:58,279 DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter [main] LoadPlan(entity=br.com.bookstore.accountmanagement.domain.entities.User)
+2022-07-15 20:20:58,279 DEBUG org.hibernate.loader.plan.build.spi.LoadPlanTreePrinter [main] LoadPlan(entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
     - Returns
-       - EntityReturnImpl(entity=br.com.bookstore.accountmanagement.domain.entities.User, querySpaceUid=<gen:0>, path=br.com.bookstore.accountmanagement.domain.entities.User)
+       - EntityReturnImpl(entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser, querySpaceUid=<gen:0>, path=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
     - QuerySpaces
-       - EntityQuerySpaceImpl(uid=<gen:0>, entity=br.com.bookstore.accountmanagement.domain.entities.User)
+       - EntityQuerySpaceImpl(uid=<gen:0>, entity=br.com.bookstore.accountmanagement.domain.entities.BookstoreUser)
           - SQL table alias mapping - user0_
           - alias suffix - 0_
           - suffixed key columns - {id1_0_0_}
 
-2022-07-15 20:20:58,281 DEBUG org.hibernate.loader.entity.plan.EntityLoader [main] Static select for entity br.com.bookstore.accountmanagement.domain.entities.User [NONE]: select user0_.id as id1_0_0_, user0_.email as email2_0_0_, user0_.first_name as first_na3_0_0_, user0_.keycloak_id as keycloak4_0_0_, user0_.last_name as last_nam5_0_0_, user0_.username as username6_0_0_ from tb_user user0_ where user0_.id=?
+2022-07-15 20:20:58,281 DEBUG org.hibernate.loader.entity.plan.EntityLoader [main] Static select for entity br.com.bookstore.accountmanagement.domain.entities.BookstoreUser [NONE]: select user0_.id as id1_0_0_, user0_.email as email2_0_0_, user0_.first_name as first_na3_0_0_, user0_.keycloak_id as keycloak4_0_0_, user0_.last_name as last_nam5_0_0_, user0_.username as username6_0_0_ from tb_user user0_ where user0_.id=?
 2022-07-15 20:20:58,348 DEBUG org.hibernate.mapping.Table [main] No alter strings for table : tb_user
 2022-07-15 20:20:58,349 INFO org.hibernate.engine.transaction.jta.platform.internal.JtaPlatformInitiator [main] HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
 2022-07-15 20:20:58,350 DEBUG org.hibernate.query.spi.NamedQueryRepository [main] Checking 0 named HQL queries
@@ -3025,7 +3025,7 @@ Unconditional classes:
 2022-07-15 20:20:59,121 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'userListener' via constructor to bean named 'keycloakService'
 2022-07-15 20:20:59,121 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'userListener' via constructor to bean named 'userService'
 2022-07-15 20:20:59,124 DEBUG org.springframework.core.env.PropertySourcesPropertyResolver [main] Found key 'queue-names.delete-user' in PropertySource 'environmentProperties' with value of type String
-2022-07-15 20:20:59,124 DEBUG org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor [main] 1 @JmsListener methods processed on bean 'userListener': {public void br.com.bookstore.accountmanagement.listeners.UserListener.deleteUser(br.com.bookstore.accountmanagement.domain.dtos.UserDTO)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="", concurrency="", destination="${queue-names.delete-user}")]}
+2022-07-15 20:20:59,124 DEBUG org.springframework.jms.annotation.JmsListenerAnnotationBeanPostProcessor [main] 1 @JmsListener methods processed on bean 'userListener': {public void br.com.bookstore.accountmanagement.listeners.UserListener.deleteUser(br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO)=[@org.springframework.jms.annotation.JmsListener(selector="", id="", subscription="", containerFactory="", concurrency="", destination="${queue-names.delete-user}")]}
 2022-07-15 20:20:59,124 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Creating shared instance of singleton bean 'authenticationManagerBuilder'
 2022-07-15 20:20:59,125 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'authenticationManagerBuilder' via factory method to bean named 'objectPostProcessor'
 2022-07-15 20:20:59,126 DEBUG org.springframework.beans.factory.support.DefaultListableBeanFactory [main] Autowiring by type from bean name 'authenticationManagerBuilder' via factory method to bean named 'org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext@1941a8ff'

@@ -25,6 +25,8 @@ spring:
           jwk-set-uri: http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/certs
 
 feign:
+  account-manager:
+    address: localhost:8081/account-manager
   client:
     config:
       default:

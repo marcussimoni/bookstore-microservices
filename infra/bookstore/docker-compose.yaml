@@ -1,0 +1,34 @@
+version: "3.9"
+services:
+  account-management:
+    image: bookstore/account-management
+    container_name: 'bookstore-account-management'
+    restart: always
+    environment:
+      POSTGRES_HOST: postgresql
+      KEYCLOAK_HOST: keycloak
+      RABBIT_MQ_HOST: rabbitmq
+      SPRING_PROFILES_ACTIVE: prd
+      USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
+    ports:
+      - 8081:8081
+    networks:
+    - infra_bookstore-network
+
+  # bookstore-catalog:
+  #   image: bookstore/bookstore-catalog
+  #   container_name: 'bookstore-catalog'
+  #   restart: always
+  #   environment:
+  #     POSTGRES_HOST: postgresql
+  #     KEYCLOAK_HOST: keycloak
+  #     SPRING_PROFILES_ACTIVE: prd
+  #     USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
+  #   ports:
+  #     - 8083:8083
+  #   networks:
+  #   - infra_bookstore-network
+
+networks:
+  infra_bookstore-network:
+    external: true

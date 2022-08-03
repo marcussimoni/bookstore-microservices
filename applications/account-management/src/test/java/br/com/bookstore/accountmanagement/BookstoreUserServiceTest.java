@@ -1,7 +1,9 @@
 package br.com.bookstore.accountmanagement;
 
 import br.com.bookstore.accountmanagement.config.testcontainer.PostgresTestContainer;
-import br.com.bookstore.accountmanagement.domain.dtos.UserDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.SignUpDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO;
+import br.com.bookstore.accountmanagement.services.KeycloakService;
 import br.com.bookstore.accountmanagement.services.UserService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,10 +18,13 @@ import org.springframework.test.context.ContextConfiguration;
 @ContextConfiguration(initializers = {
         PostgresTestContainer.Initializer.class
 })
-public class UserServiceTest extends PostgresTestContainer {
+public class BookstoreUserServiceTest extends PostgresTestContainer {
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private KeycloakService keycloakService;
 
     @Autowired
     private ObjectMapper objectMapper;
@@ -29,13 +34,15 @@ public class UserServiceTest extends PostgresTestContainer {
 
         String json = getPayload();
 
-        UserDTO userDTO = objectMapper.readValue(json, UserDTO.class);
+        SignUpDTO signUpDTO = objectMapper.readValue(json, SignUpDTO.class);
 
-        userService.signUp(userDTO);
+        userService.signUp(signUpDTO);
 
-        UserDTO client = userService.findByUsername(userDTO);
+        KeycloakUserDTO keycloakUserDTO = userService.userDtoBuilder(signUpDTO);
 
-        Assertions.assertEquals(userDTO.getUsername(), client.getUsername());
+        KeycloakUserDTO client = keycloakService.findByUsername(keycloakUserDTO);
+
+        Assertions.assertEquals(keycloakUserDTO.getUsername(), client.getUsername());
 
     }
 
@@ -47,22 +54,7 @@ public class UserServiceTest extends PostgresTestContainer {
                 "    \"email\": \"bookstore@bookstore.com\",\n" +
                 "    \"firstName\": \"first name\",\n" +
                 "    \"lastName\": \"last name\",\n" +
-                "    \"credentials\": [\n" +
-                "        {\n" +
-                "            \"type\": \"password\",\n" +
-                "            \"value\": \"123456\",\n" +
-                "            \"temporary\": false\n" +
-                "        }\n" +
-                "    ],\n" +
-                "    \"emailVerified\": false,\n" +
-                "    \"requiredActions\": [\n" +
-                "        \"CONFIGURE_TOTP\",\n" +
-                "        \"VEFITY_EMAIL\"\n" +
-                "    ],\n" +
-                "    \"groups\": [],\n" +
-                "    \"attributes\": {\n" +
-                "        \"locale\": [\"en\"]\n" +
-                "    }   \n" +
+                "    \"password\": \"123456\"" +
                 "}";
     }
 

@@ -1,18 +1,23 @@
 package br.com.bookstore.accountmanagement.services;
 
-import br.com.bookstore.accountmanagement.domain.dtos.UserDTO;
-import br.com.bookstore.accountmanagement.domain.entities.User;
+import br.com.bookstore.accountmanagement.domain.dtos.CredentialsDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.SignUpDTO;
+import br.com.bookstore.accountmanagement.domain.entities.BookstoreUser;
 import br.com.bookstore.accountmanagement.domain.repositories.UserRepository;
+import br.com.bookstore.dto.BookstoreUserDTO;
+import br.com.bookstore.exceptions.BookstoreError;
+import br.com.bookstore.exceptions.BookstoreException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
-import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Objects;
+
 @Slf4j
 @Service
 @RequiredArgsConstructor
@@ -29,29 +34,25 @@ public class UserService {
     @Value("${queue-names.delete-user}")
     private String queueDeleteUser;
 
-    public UserDTO findByUsername(UserDTO userDTO){
 
-        List<UserDTO> users = keycloakService.findByUsername(userDTO.getUsername());
 
-        return CollectionUtils.isEmpty(users) ? null : users.get(0);
+    public void signUp(SignUpDTO signUpDTO){
 
-    }
+        KeycloakUserDTO keycloakUserDTO = userDtoBuilder(signUpDTO);
 
-    public void signUp(UserDTO userDTO){
-
-        UserDTO user = findByUsername(userDTO);
+        KeycloakUserDTO user = keycloakService.findByUsername(keycloakUserDTO);
 
         if(Objects.nonNull(user)){
             throw new RuntimeException("Username already exists");
         }
 
-        keycloakService.createNewUser(userDTO);
+        keycloakService.createNewUser(keycloakUserDTO);
 
-        user = findByUsername(userDTO);
+        user = keycloakService.findByUsername(keycloakUserDTO);
 
         try{
 
-            User entity = mapper.map(userDTO, User.class);
+            BookstoreUser entity = mapper.map(keycloakUserDTO, BookstoreUser.class);
 
             entity.setKeycloakId(user.getId());
 
@@ -67,13 +68,34 @@ public class UserService {
 
     }
 
-    public void delete(UserDTO dto) {
+    public KeycloakUserDTO userDtoBuilder(SignUpDTO signUpDTO) {
 
-        UserDTO user = findByUsername(dto);
+        CredentialsDTO credentialDTO = CredentialsDTO
+                .builder()
+                .type("password")
+                .value(signUpDTO.getPassword())
+                .temporary(false)
+                .build();
+
+        return KeycloakUserDTO
+                .builder()
+                .enabled(true)
+                .email(signUpDTO.getEmail())
+                .emailVerified(false)
+                .username(signUpDTO.getUsername())
+                .firstName(signUpDTO.getFirstName())
+                .lastName(signUpDTO.getLastName())
+                .credentials(List.of(credentialDTO))
+                .build();
+    }
+
+    public void delete(KeycloakUserDTO dto) {
+
+        KeycloakUserDTO user = keycloakService.findByUsername(dto);
 
         if(Objects.nonNull(user)){
 
-            User entity = mapper.map(user, User.class);
+            BookstoreUser entity = mapper.map(user, BookstoreUser.class);
 
             repository.delete(entity);
 
@@ -85,4 +107,11 @@ public class UserService {
 
     }
 
+    public BookstoreUserDTO findByUsername(String username) {
+
+        BookstoreUser user = repository.findByUsername(username).orElseThrow(() -> new BookstoreException(400, BookstoreError.builder().error("Customer not found").build()));
+
+        return mapper.map(user, BookstoreUserDTO.class);
+
+    }
 }

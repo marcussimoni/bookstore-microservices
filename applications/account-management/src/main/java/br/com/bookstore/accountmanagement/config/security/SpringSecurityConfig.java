@@ -27,8 +27,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .authorizeRequests(auth ->
                     auth
-                        .antMatchers(HttpMethod.GET, "/users/**").hasAuthority(USER)
-                        .antMatchers(HttpMethod.PUT, "/users/**").hasAuthority(USER)
+                        .antMatchers(HttpMethod.GET, "/user/**").hasAuthority(USER)
                         .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer()

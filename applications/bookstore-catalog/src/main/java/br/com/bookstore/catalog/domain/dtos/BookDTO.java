@@ -1,5 +1,6 @@
 package br.com.bookstore.catalog.domain.dtos;
 
+import br.com.bookstore.dto.BookstoreUserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,8 +20,7 @@ public class BookDTO implements Serializable {
 
     private long id;
 
-    @NotBlank
-    private String authorId;
+    private BookstoreUserDTO author;
 
     @NotBlank
     private String publisher;

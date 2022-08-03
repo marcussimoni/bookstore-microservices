@@ -1,4 +1,4 @@
-version: "3.2"
+version: "3.9"
 
 services:
   rabbitmq:
@@ -8,6 +8,8 @@ services:
     ports:
       - 5672:5672
       - 15672:15672
+    networks:
+    - bookstore-network
 
   postgresql:
     image: postgres:12.3-alpine
@@ -21,6 +23,8 @@ services:
       - postgres:/var/lib/postgresql/data
     ports:
       - 5432:5432
+    networks:
+    - bookstore-network  
 
   keycloak:
     image: bitnami/keycloak:18.0.2
@@ -41,44 +45,14 @@ services:
       - KEYCLOAK_DATABASE_USER=postgres
       - KEYCLOAK_DATABASE_PASSWORD=postgres
       - KEYCLOAK_DATABASE_SCHEMA=public
-      # config keycloak token issuer
-      # - KEYCLOAK_HOSTNAME=keycloak-server
-      # - KEYCLOAK_HTTP_PORT=8080
     depends_on:
       - postgresql
-
-  account-management:
-    image: bookstore/account-management
-    container_name: 'bookstore-account-management'
-    restart: always
-    environment:
-      POSTGRES_HOST: postgresql
-      KEYCLOAK_HOST: keycloak
-      RABBIT_MQ_HOST: rabbitmq
-      SPRING_PROFILES_ACTIVE: prd
-      USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
-    ports:
-      - 8081:8081
-    depends_on:
-      - postgresql  
-      - keycloak
-      - rabbitmq
-
-  bookstore-catalog:
-    image: bookstore/bookstore-catalog
-    container_name: 'bookstore-catalog'
-    restart: always
-    environment:
-      POSTGRES_HOST: postgresql
-      KEYCLOAK_HOST: keycloak
-      SPRING_PROFILES_ACTIVE: prd
-      USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
-    ports:
-      - 8083:8083
-    depends_on:
-      - postgresql  
-      - keycloak
+    networks:
+    - bookstore-network  
 
 volumes:
   postgres:
 
+networks:
+  bookstore-network:
+    driver: bridge

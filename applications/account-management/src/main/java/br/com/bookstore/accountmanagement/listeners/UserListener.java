@@ -1,6 +1,6 @@
 package br.com.bookstore.accountmanagement.listeners;
 
-import br.com.bookstore.accountmanagement.domain.dtos.UserDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO;
 import br.com.bookstore.accountmanagement.services.KeycloakService;
 import br.com.bookstore.accountmanagement.services.UserService;
 import lombok.RequiredArgsConstructor;
@@ -17,7 +17,7 @@ public class UserListener {
     private final UserService userService;
 
     @JmsListener(destination = "${queue-names.delete-user}")
-    public void deleteUser(UserDTO user){
+    public void deleteUser(KeycloakUserDTO user){
 
         log.info("Delete user at keycloak server");
 

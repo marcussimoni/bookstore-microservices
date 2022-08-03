@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @RestController
 @RequestMapping("books")
@@ -31,13 +32,13 @@ public class BookController {
     }
 
     @PostMapping
-    public ResponseEntity<BookDTO> save(@RequestBody @Valid BookDTO dto){
-        return new ResponseEntity<>(service.save(dto), HttpStatus.CREATED);
+    public ResponseEntity<BookDTO> save(@RequestBody @Valid BookDTO dto, Principal principal){
+        return new ResponseEntity<>(service.save(dto, principal), HttpStatus.CREATED);
     }
 
     @PutMapping(path = "{id}")
-    public ResponseEntity<BookDTO> update(@PathVariable("id") long id, @RequestBody @Valid BookDTO dto){
-        return new ResponseEntity<>(service.update(id, dto), HttpStatus.OK);
+    public ResponseEntity<BookDTO> update(@PathVariable("id") long id, @RequestBody @Valid BookDTO dto, Principal principal){
+        return new ResponseEntity<>(service.update(id, dto, principal), HttpStatus.OK);
     }
 
     @DeleteMapping(path = "{id}")

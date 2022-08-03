@@ -6,7 +6,7 @@ import br.com.bookstore.accountmanagement.config.feign.interceptors.KeycloakAuth
 import br.com.bookstore.accountmanagement.domain.dtos.KeycloakAccessTokenDTO;
 import br.com.bookstore.accountmanagement.domain.dtos.KeycloakAuthTokenRequestDTO;
 import br.com.bookstore.accountmanagement.domain.dtos.LoginDTO;
-import br.com.bookstore.accountmanagement.domain.dtos.UserDTO;
+import br.com.bookstore.accountmanagement.domain.dtos.KeycloakUserDTO;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,9 +22,9 @@ public interface KeycloakClient {
 
     String BASE_PATH = "/admin/realms/bookstore-realm/users";
     @GetMapping(path = BASE_PATH + "?exact=true")
-    List<UserDTO> findByUsername(@RequestParam String username);
+    List<KeycloakUserDTO> findByUsername(@RequestParam String username);
     @PostMapping(path = BASE_PATH, consumes = "application/json")
-    void createNewUser(UserDTO userDTO);
+    void createNewUser(KeycloakUserDTO keycloakUserDTO);
 
     @PostMapping(path = "/realms/master/protocol/openid-connect/token", consumes = "application/x-www-form-urlencoded")
     KeycloakAccessTokenDTO getAuthToken(@RequestBody KeycloakAuthTokenRequestDTO request);
