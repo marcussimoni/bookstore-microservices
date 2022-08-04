@@ -28,10 +28,12 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests(auth ->
                     auth
                         .antMatchers(HttpMethod.GET, "/user/**").hasAuthority(USER)
-                        .anyRequest().authenticated()
+                        .anyRequest()
+                        .authenticated()
                 )
                 .oauth2ResourceServer()
                 .jwt().jwtAuthenticationConverter(autheticationConverter())
+
         ;
     }
 

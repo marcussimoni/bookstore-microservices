@@ -9,6 +9,7 @@ import br.com.bookstore.exceptions.BookstoreError;
 import br.com.bookstore.exceptions.BookstoreException;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,8 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.security.Principal;
 
+import static br.com.bookstore.catalog.config.RedisConfig.CACHE_BOOKS;
+
 @Data
 @Service
 public class BookService {
@@ -28,6 +31,7 @@ public class BookService {
 
     private final AccountManagerClient accountManagerClient;
 
+    @Cacheable(cacheNames = CACHE_BOOKS)
     public Page<BookDTO> findAll(Pageable page, Authentication auth){
 
         Jwt jwt = getJwt(auth);

@@ -12,11 +12,14 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Objects;
+
+import static br.com.bookstore.accountmanagement.config.cache.RedisConfig.CACHE_USER;
 
 @Slf4j
 @Service
@@ -33,8 +36,6 @@ public class UserService {
 
     @Value("${queue-names.delete-user}")
     private String queueDeleteUser;
-
-
 
     public void signUp(SignUpDTO signUpDTO){
 
@@ -106,7 +107,7 @@ public class UserService {
         }
 
     }
-
+    @Cacheable(cacheNames = CACHE_USER)
     public BookstoreUserDTO findByUsername(String username) {
 
         BookstoreUser user = repository.findByUsername(username).orElseThrow(() -> new BookstoreException(400, BookstoreError.builder().error("Customer not found").build()));
@@ -114,4 +115,5 @@ public class UserService {
         return mapper.map(user, BookstoreUserDTO.class);
 
     }
+
 }

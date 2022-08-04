@@ -28,16 +28,20 @@ spring:
         jwt:
           issuer-uri: http://localhost:9000/realms/bookstore-realm
           jwk-set-uri: http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/certs
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    redis:
+      time-to-live: 60000
 
 keycloak-server:
   host: http://localhost:9000
   user-management-client:
     password: ${USER-MANAGEMENT-CLIENT-PASSWORD}
 
-
 queue-names:
   delete-user: q.delete-user
-
 
 feign:
   client:

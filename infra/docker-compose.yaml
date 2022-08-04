@@ -50,6 +50,15 @@ services:
     networks:
     - bookstore-network  
 
+  redis-server:
+    image: redis:bullseye
+    container_name: 'redis-server'
+    restart: always
+    ports:
+      - "6379:6379"
+    networks:
+    - bookstore-network  
+
 volumes:
   postgres:
 

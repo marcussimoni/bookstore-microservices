@@ -23,8 +23,16 @@ spring:
         jwt:
           issuer-uri: http://keycloak:8080/realms/bookstore-realm
           jwk-set-uri: http://${KEYCLOAK_HOST}:8080/realms/bookstore-realm/protocol/openid-connect/certs
+  redis:
+    host: ${REDIS_HOST}
+    port: 6379
+  cache:
+    redis:
+      time-to-live: 60000
 
 feign:
+  account-manager:
+    address: http://${ACCOUNT_MANAGEMENT_HOST}:8081/account-management
   client:
     config:
       default:

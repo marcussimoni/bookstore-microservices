@@ -23,6 +23,12 @@ spring:
         jwt:
           issuer-uri: http://localhost:9000/realms/bookstore-realm
           jwk-set-uri: http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/certs
+  redis:
+    host: localhost
+    port: 6379
+  cache:
+    redis:
+      time-to-live: 60000
 
 feign:
   account-manager:

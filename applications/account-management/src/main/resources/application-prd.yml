@@ -27,7 +27,13 @@ spring:
       resourceserver:
         jwt:
           issuer-uri: http://keycloak:8080/realms/bookstore-realm
-          jwk-set-uri: http://${KEYCLOAK_HOST}:9000/realms/bookstore-realm/protocol/openid-connect/certs
+          jwk-set-uri: http://${KEYCLOAK_HOST}:8080/realms/bookstore-realm/protocol/openid-connect/certs
+  redis:
+    host: ${REDIS_HOST}
+    port: 6379
+  cache:
+    redis:
+      time-to-live: 60000
 
 keycloak-server:
   host: http://${KEYCLOAK_HOST}:8080
