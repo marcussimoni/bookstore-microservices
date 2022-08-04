@@ -1,6 +1,6 @@
 package br.com.bookstore.catalog.services;
 
-import br.com.bookstore.catalog.clients.AccountManagerClient;
+import br.com.bookstore.catalog.config.RedisConfig;
 import br.com.bookstore.catalog.domain.dtos.BookDTO;
 import br.com.bookstore.catalog.domain.entities.Book;
 import br.com.bookstore.catalog.domain.repositories.BookRepository;
@@ -12,9 +12,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -29,20 +27,18 @@ public class BookService {
     private final BookRepository repository;
     private final ModelMapper mapper = new ModelMapper();
 
-    private final AccountManagerClient accountManagerClient;
+    private final AccountManagementService accountManagementService;
 
     @Cacheable(cacheNames = CACHE_BOOKS)
-    public Page<BookDTO> findAll(Pageable page, Authentication auth){
-
-        Jwt jwt = getJwt(auth);
+    public Page<BookDTO> findAll(Pageable page){
 
         return repository.findAll(page).map(book -> {
 
             BookDTO bookDTO = mapper.map(book, BookDTO.class);
 
-            ResponseEntity<BookstoreUserDTO> response = accountManagerClient.findByUsername(book.getAuthorId(), getAuthorizationToken(jwt));
+            BookstoreUserDTO response = accountManagementService.findByUsername(book.getAuthorId());
 
-            bookDTO.setAuthor(response.getBody());
+            bookDTO.setAuthor(response);
 
             return bookDTO;
 
@@ -50,15 +46,7 @@ public class BookService {
 
     }
 
-    private static Jwt getJwt(Authentication auth) {
-        Jwt jwt = (Jwt) auth.getCredentials();
-        return jwt;
-    }
-
-    private static String getAuthorizationToken(Jwt jwt) {
-        return "Bearer " + jwt.getTokenValue();
-    }
-
+    @Cacheable(cacheNames = RedisConfig.CACHE_BOOK_BY_ID)
     public BookDTO findById(long id){
 
         BookstoreError error = BookstoreError
@@ -70,7 +58,11 @@ public class BookService {
                 .findById(id)
                 .orElseThrow(() -> new BookstoreException(400, error));
 
-        return mapper.map(book, BookDTO.class);
+        BookDTO bookDTO = mapper.map(book, BookDTO.class);
+
+        bookDTO.setAuthor(accountManagementService.findByUsername(book.getAuthorId()));
+
+        return bookDTO;
 
     }
 
@@ -79,15 +71,13 @@ public class BookService {
 
         Book entity = mapper.map(dto, Book.class);
 
-        Jwt jwt = getJwt(auth);
-
         entity.setAuthorId(auth.getName());
 
         repository.save(entity);
 
         BookDTO bookDTO = mapper.map(entity, BookDTO.class);
 
-        bookDTO.setAuthor(accountManagerClient.findByUsername(auth.getName(), getAuthorizationToken(jwt)).getBody());
+        bookDTO.setAuthor(accountManagementService.findByUsername(auth.getName()));
 
         return bookDTO;
 

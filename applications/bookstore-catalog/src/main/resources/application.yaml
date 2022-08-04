@@ -21,7 +21,8 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: http://localhost:9000/realms/bookstore-realm
+#          issuer-uri: http://localhost:9000/realms/bookstore-realm
+          issuer-uri: http://keycloak:8080/realms/bookstore-realm
           jwk-set-uri: http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/certs
   redis:
     host: localhost
@@ -31,7 +32,7 @@ spring:
       time-to-live: 60000
 
 feign:
-  account-manager:
+  account-management:
     address: http://localhost:8081/account-management
   client:
     config:

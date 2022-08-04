@@ -21,9 +21,9 @@ public class BookController {
     private BookService service;
 
     @GetMapping
-    public Page<BookDTO> listAll(Pageable page, Authentication auth){
+    public Page<BookDTO> listAll(Pageable page){
 
-        return service.findAll(page, auth);
+        return service.findAll(page);
 
     }
 

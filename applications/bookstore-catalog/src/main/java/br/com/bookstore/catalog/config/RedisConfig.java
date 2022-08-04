@@ -13,6 +13,8 @@ import static org.springframework.data.redis.cache.RedisCacheConfiguration.defau
 public class RedisConfig {
 
     public static final String CACHE_BOOKS = "cache-books";
+    public static final String CACHE_BOOK_BY_ID = "cache-book-by-id";
+    public static final String CACHE_AUTHOR = "cache-author";
 
     @Bean
     public RedisCacheConfiguration cacheConfiguration() {
@@ -23,7 +25,10 @@ public class RedisConfig {
 
     @Bean
     public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
-        return (builder) -> builder.withCacheConfiguration(CACHE_BOOKS, defaultCacheConfig().entryTtl(Duration.ofMinutes(10)));
+        return (builder) -> builder
+                .withCacheConfiguration(CACHE_BOOKS, defaultCacheConfig().entryTtl(Duration.ofMinutes(5)))
+                .withCacheConfiguration(CACHE_BOOK_BY_ID, defaultCacheConfig().entryTtl(Duration.ofMinutes(1)))
+                ;
     }
 
 }
