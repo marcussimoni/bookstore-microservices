@@ -10,6 +10,5 @@ public class BookstoreError {
     private String description;
     private String message;
     private String error;
-    private int status;
 
 }

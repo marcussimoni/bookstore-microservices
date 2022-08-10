@@ -25,8 +25,8 @@ import static br.com.bookstore.catalog.config.RedisConfig.CACHE_BOOKS;
 public class BookService {
 
     private final BookRepository repository;
-    private final ModelMapper mapper = new ModelMapper();
 
+    private final ModelMapper mapper;
     private final AccountManagementService accountManagementService;
 
     @Cacheable(cacheNames = CACHE_BOOKS)

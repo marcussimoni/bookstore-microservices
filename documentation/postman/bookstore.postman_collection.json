@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "882580d7-55b9-4c29-8230-60c6729d77ed",
+		"_postman_id": "46aa3691-c25a-4ed9-ae70-037181ee8014",
 		"name": "bookstore",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -20,7 +20,7 @@
 									"",
 									"    var json = pm.response.json()",
 									"",
-									"    pm.environment.set(\"access_token\", json.access_token);",
+									"    pm.environment.set(\"admin_access_token\", json.access_token);",
 									"",
 									"});"
 								],
@@ -46,20 +46,8 @@
 							"urlencoded": [
 								{
 									"key": "client_id",
-									"value": "admin-cli",
+									"value": "user-management-client",
 									"type": "text"
-								},
-								{
-									"key": "username",
-									"value": "bookstore",
-									"type": "text",
-									"disabled": true
-								},
-								{
-									"key": "password",
-									"value": "bookstore",
-									"type": "text",
-									"disabled": true
 								},
 								{
 									"key": "grant_type",
@@ -68,13 +56,13 @@
 								},
 								{
 									"key": "client_secret",
-									"value": "HZ856G6qip6Y4rniENSqJkg2PfTSABMm",
+									"value": "KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:9000/realms/master/protocol/openid-connect/token",
+							"raw": "http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/token",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -82,7 +70,78 @@
 							"port": "9000",
 							"path": [
 								"realms",
-								"master",
+								"bookstore-realm",
+								"protocol",
+								"openid-connect",
+								"token"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "generate admin token Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    var json = pm.response.json()",
+									"",
+									"    pm.environment.set(\"admin_access_token\", json.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJoblc4dXdOY3E2Wi1nYVRlSWZpMU5NU2VrdGxxNjFWb184eXdfVU1VV29RIn0.eyJleHAiOjE2NTY3Njg1MjcsImlhdCI6MTY1Njc2ODIyNywianRpIjoiMjVkNTEyMDEtNmQ1Yi00OWVkLThkMDItMTM1NjczYTcxODI1IiwiaXNzIjoiaHR0cDovL2xvY2FsaG9zdDo5MDAwL3JlYWxtcy9ib29rc3RvcmUtcmVhbG0iLCJhdWQiOiJhY2NvdW50Iiwic3ViIjoiMTM1NDZmYmQtMTVkNi00OTM4LWFiM2UtNWRhZTk1OWI0ZmEwIiwidHlwIjoiQmVhcmVyIiwiYXpwIjoidXNlci1tYW5hZ2VtZW50LWNsaWVudCIsInNlc3Npb25fc3RhdGUiOiI2MWU5ZTRjZi03OWMzLTQ5YzAtOTU4OS04ZjQyYTBmNzExZjMiLCJhY3IiOiIxIiwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbImRlZmF1bHQtcm9sZXMtYm9va3N0b3JlLXJlYWxtIiwib2ZmbGluZV9hY2Nlc3MiLCJ1bWFfYXV0aG9yaXphdGlvbiIsInVzZXIiXX0sInJlc291cmNlX2FjY2VzcyI6eyJhY2NvdW50Ijp7InJvbGVzIjpbIm1hbmFnZS1hY2NvdW50IiwibWFuYWdlLWFjY291bnQtbGlua3MiLCJ2aWV3LXByb2ZpbGUiXX19LCJzY29wZSI6InByb2ZpbGUgZW1haWwiLCJzaWQiOiI2MWU5ZTRjZi03OWMzLTQ5YzAtOTU4OS04ZjQyYTBmNzExZjMiLCJlbWFpbF92ZXJpZmllZCI6ZmFsc2UsInByZWZlcnJlZF91c2VybmFtZSI6ImJvb2tzdG9yZSJ9.bXFxo1ycWo04yvKrEPX1OH_4kLUnBP69MT54FiWwHg4ywLH6IgW2SYNDEYeeZrg2uls5eSoDtgtugqnMI7IK8BhHk9jXv3BC9LQMu8D-04eQWihRw9i7tOU2czeb07jvBvAyvNe6irBYqLyLfjXtCF6zWkKue4Q5PZlyeTS71C0CKSV0Iap8VVsMBbNoKLpJtL0iPeJIOK7hfiL8CorgFvUDgERfHXgsdrrrJCB4iDh4CH29mkYEeilsmbwm0kIk7aDFOdMXvU1f97ouNLYzZE7yi28ZayZefSKPsV05CprzgEWKx_yuMNHcVmBWUfKWrenepOttl1eXadUndS_NEQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "client_id",
+									"value": "user-management-client",
+									"type": "text"
+								},
+								{
+									"key": "grant_type",
+									"value": "client_credentials",
+									"type": "text"
+								},
+								{
+									"key": "client_secret",
+									"value": "KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:9000/realms/bookstore-realm/protocol/openid-connect/token",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "9000",
+							"path": [
+								"realms",
+								"bookstore-realm",
 								"protocol",
 								"openid-connect",
 								"token"
@@ -99,7 +158,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "{{access_token}}",
+									"value": "{{admin_access_token}}",
 									"type": "string"
 								}
 							]
@@ -107,7 +166,8 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "localhost:9000/admin/realms/bookstore-realm/users",
+							"raw": "http://localhost:9000/admin/realms/bookstore-realm/users?exact=true&username=bookstore",
+							"protocol": "http",
 							"host": [
 								"localhost"
 							],
@@ -117,6 +177,16 @@
 								"realms",
 								"bookstore-realm",
 								"users"
+							],
+							"query": [
+								{
+									"key": "exact",
+									"value": "true"
+								},
+								{
+									"key": "username",
+									"value": "bookstore"
+								}
 							]
 						}
 					},
@@ -368,37 +438,27 @@
 			"name": "user-management",
 			"item": [
 				{
-					"name": "Get users",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "localhost:8081/user-management/users",
-							"host": [
-								"localhost"
-							],
-							"port": "8081",
-							"path": [
-								"user-management",
-								"users"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "Sign up",
 					"request": {
 						"method": "POST",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user-test2\",\n    \"email\": \"test2@test.com\",\n    \"firstName\": \"first name\",\n    \"lastName\": \"last name\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": {
-							"raw": "localhost:8081/user-management/sign-up",
+							"raw": "localhost:8081/account-management/sign-up",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
-								"user-management",
+								"account-management",
 								"sign-up"
 							]
 						}
@@ -407,12 +467,30 @@
 				},
 				{
 					"name": "Sign in",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"",
+									"    var json = pm.response.json()",
+									"",
+									"    pm.environment.set(\"bookstore_token\", json.access_token);",
+									"",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"bookstore\",\n    \"password\": \"bookstore\"\n}",
+							"raw": "{\n    \"username\": \"user-test\",\n    \"password\": \"123456\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -420,14 +498,320 @@
 							}
 						},
 						"url": {
-							"raw": "localhost:8081/user-management/sign-in",
+							"raw": "localhost:8081/account-management/sign-in",
 							"host": [
 								"localhost"
 							],
 							"port": "8081",
 							"path": [
-								"user-management",
+								"account-management",
 								"sign-in"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticated user",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"user-test\",\n    \"password\": \"123456\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8081/account-management/user/authenticated",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account-management",
+								"user",
+								"authenticated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find user by username",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8081/account-management/user?username=user-test2",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"account-management",
+								"user"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "user-test2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "bookstore",
+			"item": [
+				{
+					"name": "List all books",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8082/bookstore/site/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8082",
+							"path": [
+								"bookstore",
+								"site",
+								"books"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "catalog",
+			"item": [
+				{
+					"name": "List all books",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/catalog/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalog",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "find book by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8083/catalog/books/1",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalog",
+								"books",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/catalog/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalog",
+								"books"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/catalog/books/2",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalog",
+								"books",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete book",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{bookstore_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:8083/catalog/books",
+							"host": [
+								"localhost"
+							],
+							"port": "8083",
+							"path": [
+								"catalog",
+								"books"
 							]
 						}
 					},

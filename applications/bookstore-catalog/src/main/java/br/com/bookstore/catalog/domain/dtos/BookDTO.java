@@ -1,6 +1,7 @@
 package br.com.bookstore.catalog.domain.dtos;
 
 import br.com.bookstore.dto.BookstoreUserDTO;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +12,8 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.io.Serializable;
 import java.time.LocalDate;
+
+import static com.fasterxml.jackson.annotation.JsonFormat.Shape.STRING;
 
 @Data
 @Builder
@@ -27,6 +30,7 @@ public class BookDTO implements Serializable {
     private String title;
 
     @NotNull
+    @JsonFormat(shape = STRING, pattern = "yyyy-MM-dd")
     private LocalDate releasedAt;
 
     @NotNull

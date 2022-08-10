@@ -19,7 +19,6 @@ public class BookstoreExceptionHandler {
                 .message(keycloakException.getError().getErrorMessage())
                 .error(keycloakException.getError().getError())
                 .description(keycloakException.getError().getErrorDescription())
-                .status(keycloakException.getStatus())
                 .build();
 
         return ResponseEntity.status(keycloakException.getStatus()).body(error);
@@ -28,11 +27,11 @@ public class BookstoreExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler({BookstoreException.class})
-    public ResponseEntity<BookstoreException> bookstoreExceptionHandler(Exception exception){
+    public ResponseEntity<BookstoreError> bookstoreExceptionHandler(Exception exception){
 
         BookstoreException bookstoreException = (BookstoreException) exception;
 
-        return ResponseEntity.status(bookstoreException.getStatus()).body(bookstoreException);
+        return ResponseEntity.status(bookstoreException.getStatus()).body(bookstoreException.getError());
 
     }
 

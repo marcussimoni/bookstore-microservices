@@ -16,21 +16,21 @@ services:
     networks:
     - infra_bookstore-network
 
-  # bookstore-catalog:
-  #   image: bookstore/bookstore-catalog
-  #   container_name: 'bookstore-catalog'
-  #   restart: always
-  #   environment:
-  #     POSTGRES_HOST: postgresql
-  #     KEYCLOAK_HOST: keycloak
-  #     SPRING_PROFILES_ACTIVE: prd
-  #     USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
-  #     ACCOUNT_MANAGEMENT_HOST: account-management
-  #     REDIS_HOST: redis-server
-  #   ports:
-  #     - 8083:8083
-  #   networks:
-  #   - infra_bookstore-network
+  bookstore-catalog:
+    image: bookstore/bookstore-catalog
+    container_name: 'bookstore-catalog'
+    restart: always
+    environment:
+      POSTGRES_HOST: postgresql
+      KEYCLOAK_HOST: keycloak
+      SPRING_PROFILES_ACTIVE: prd
+      USER-MANAGEMENT-CLIENT-PASSWORD: KJrgEGVFiLG9pTyZYaYQKHFLdnrk3SAA
+      ACCOUNT_MANAGEMENT_HOST: account-management
+      REDIS_HOST: redis-server
+    ports:
+      - 8083:8083
+    networks:
+    - infra_bookstore-network
 
 networks:
   infra_bookstore-network:

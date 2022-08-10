@@ -21,7 +21,7 @@ public class UserController {
     @GetMapping(path = "authenticated")
     public ResponseEntity<BookstoreUserDTO> autenticatedUser(){
 
-        SecurityContextHolder.getContext().getAuthentication()
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 
         BookstoreUserDTO dto = userService.findByUsername(auth.getName());
 
